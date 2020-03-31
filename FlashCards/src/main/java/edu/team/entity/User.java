@@ -1,7 +1,8 @@
-package java.edu.team.entity;
+package edu.team.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import javax.management.relation.Role;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -92,29 +93,13 @@ public class User {
         this.phone = phone;
     }
 
-    public Set<Reminder> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Set<Reminder> orders) {
-        this.orders = orders;
-    }
 
     public void addRole(Role role) {
         roles.add(role);
     }
 
 
-    public void addReminder(Reminder reminder) {
-        orders.add(reminder);
-        reminder.setUser(this);
-    }
-
-
-    public void removeOrder(Reminder reminder) {
-        orders.remove(reminder);
-        reminder.setUser(null);
-    }/*
+/*
     @Override
     public String toString() {
         return "User{" +

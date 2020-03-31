@@ -1,6 +1,12 @@
-package java.edu.team.flashcard;
+package edu.team.flashcard;
 
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
+
+@Path("/flashcard")
 public class flashcard {
     // The Java method will process HTTP GET requests
     @GET
