@@ -32,3 +32,46 @@ present learning materials online.
 ##### Week 3
 - [ ] Finalize Presentation
 - [ ] Finalize Documentation
+
+#### Supported Operations & Resources
+
+##### Operations
+
+###### GET
+* getallSets
+* getSetById
+* getAllCardsOfSet
+* getCardById
+* searchForSets 
+* searchSetsByCategory
+
+###### POST
+* createSet
+* addCardtoSet
+
+###### PUT
+* updateSet
+* updateCard
+
+###### Return Format
+* json
+* html
+
+##### Resources
+
+ * Swagger documentation
+ 
+ * Database
+    * MySQL
+    
+ * ORM Framework
+     * Hibernate 5
+     
+ * Dependency Management
+     * Maven
+     
+  * Version Control
+    * Git and GitHub
+    
+* IDE
+    * IntelliJ IDEA
