@@ -1,8 +1,3 @@
-"# FlashCards" 
-"# FlashCards" 
-"# FlashCards" 
-
-Joel Added this note :)
 
 ## PreschoolForward Web Application
 Problem statement:
