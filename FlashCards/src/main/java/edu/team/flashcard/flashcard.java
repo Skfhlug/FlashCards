@@ -3,6 +3,7 @@ package edu.team.flashcard;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
@@ -17,4 +18,12 @@ public class flashcard {
         String output = "Welcome to flashcard application";
         return Response.status(200).entity(output).build();
     }
+    @GET
+    @Produces("text/html")
+    @Path("{question}/{answer}")
+    public Response getMessageTest(@PathParam("question") String question, @PathParam("answer") String answer) {
+        String outputTest = "<html><h1>Question : " + question + "<br />Answer: " + answer + "</h1></html>";
+        return Response.status(200).entity(outputTest).build();
+    }
+
 }

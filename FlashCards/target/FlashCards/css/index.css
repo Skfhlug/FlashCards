@@ -6,8 +6,22 @@ h1 {
     text-align: center;
     background-color: royalblue;
     color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: x-large;
+    height: 5em;
+
+}
+.footer-left {
+    float: left;
+    width: 800px;
+    height: 5em;
+    margin-left: 10px;
+    background-color: royalblue;
+    color: white;
+    position: absolute;
+    bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+footer {
+    flex-shrink: 0;
 }
