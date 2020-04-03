@@ -1,8 +1,4 @@
-"# FlashCards" 
-"# FlashCards" 
-"# FlashCards" 
 
-Joel Added this note :)
 
 ## PreschoolForward Web Application
 Problem statement:
@@ -50,3 +46,4 @@ In advance
     - As a school manager, I want to have an rsvp function so parents can give us information.
 
 Presentation link: https://docs.google.com/presentation/d/1KEy8LvCnLWbzcCFgUCFfD1WWZm7PbBxZ1_mrCJ6rmPI/edit#slide=id.p
+
