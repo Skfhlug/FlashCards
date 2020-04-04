@@ -9,5 +9,8 @@
         <module name="FlashCards" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="FlashCards" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

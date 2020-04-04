@@ -8,5 +8,4 @@
 <body>
 <h1>Welcome to Flashcards!</h1>
 </body>
-<%@include file="footer.jsp"%>
-
+</html>

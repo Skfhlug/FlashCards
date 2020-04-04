@@ -6,38 +6,23 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="head.jsp"%>
 <body>
 
-<h1 class="nameFont1">User Register</h1>
+<h1 class="nameFont1">Add role</h1>
+
+<c:if test="${sessionAdd != null}" >
+    <p class="addStatus">${sessionAdd}</p>
+    <p class="addStatus">${sessionAdd}</p>
+    <c:set var="sessionAddd"  scope="session" />
+    <c:remove var="sessionAdd"/>
+</c:if>
+
 <div class="formDesign">
-    <form action="addUserServlet" method="post">
+    <form action="addRole" method="post">
 
-        <div class="form-group">
-            <label>First Name:</label>
-            <input type="text" name="first_name" class="form-control" placeholder="First Name"/>
-        </div>
-        <div class="form-group">
-            <label>Last Name:</label>
-            <input type="text" name="last_name" class="form-control" placeholder="Last Name"/>
-        </div>
-        <div class="form-group">
-            <label>Username:</label>
-            <input type="text" name="username" class="form-control" placeholder="username"/>
-        </div>
-        <div class="form-group">
-            <label>Password:</label>
-            <input type="password" name="password" class="form-control" placeholder=""/>
-        </div>
-        <div class="form-group">
-            <label>Email:</label>
-            <input type="email" name="email" class="form-control" placeholder="youremail@somemail.com"/>
-        </div>
 
-        <div class="form-group">
-            <label>Phone :</label>
-            <input type="text" name="phone" class="form-control" placeholder="0000000000"/>
-        </div>
         <div class="form-group">
             <label >Choose User Role:</label>
             <select  name="role">
