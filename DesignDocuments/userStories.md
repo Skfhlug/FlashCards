@@ -7,5 +7,3 @@
  - As a user I want to login and manage questions that I have.
 #### Display
  - As a user I want to display questions and answer that I added.
-
-User Stories  => [https://github.com/Skfhlug/FlashcardsTeamProject/blob/master/DesignDocuments/userStories.md]
