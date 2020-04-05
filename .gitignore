@@ -10,8 +10,12 @@
 .idea/vcs.xml
 .idea/jsLibraryMappings.xml
 .idea/FlashCards.iml
-../.idea
-.idea
+.idea/artifacts/FlashCards_war.xml
+.idea/artifacts/FlashCards_war_exploded.xml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+
 
 
 # Sensitive or high-churn files:
@@ -53,3 +57,9 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+
+src/main/resources/hibernate.cfg.xml
+src/test/resources/hibernate.cfg.xml
+
+src/main/resources/database.properties
+src/test/resources/database.properties

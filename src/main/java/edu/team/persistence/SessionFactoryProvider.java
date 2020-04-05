@@ -1,4 +1,4 @@
-package java.edu.team.persistence;
+package edu.team.persistence;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
