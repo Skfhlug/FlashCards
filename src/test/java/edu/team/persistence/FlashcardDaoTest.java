@@ -38,15 +38,16 @@ public class FlashcardDaoTest {
         assertEquals(13, retrievedFlashcard.getId());
     }
 
-//    @Test
-//    void insertSuccess() {
-//        FlashcardSet flashcardSet = genericDaoFlashcardSet.getById(5);
-//        Flashcard flashcard = new Flashcard(flashcardSet, "What is the difference between 'let' and 'const'?", "Let value can change and const should remain constant.");
-//        int id = genericDao.insert(flashcard);
-//        assertNotEquals(0, id);
-//        Flashcard insertedFlashcard = genericDao.getById(id);
-//        assertEquals(insertedFlashcard.getAnswer(), flashcard.getAnswer());
-//    }
+    @Test
+    void insertSuccess() {
+        FlashcardSet flashcardSet = new FlashcardSet("Javascript", "Computer Science", "Simple computer science questions");
+        genericDaoFlashcardSet.insert(flashcardSet);
+        Flashcard flashcard = new Flashcard(flashcardSet, "What is the difference between 'let' and 'const'?", "Let value can change and const should remain constant.");
+        int id = genericDao.insert(flashcard);
+        assertNotEquals(0, id);
+        Flashcard insertedFlashcard = genericDao.getById(id);
+        assertEquals(insertedFlashcard.getAnswer(), flashcard.getAnswer());
+    }
 
     @Test
     void deleteSuccess() {

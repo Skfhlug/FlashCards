@@ -20,16 +20,11 @@ public class Flashcard {
     @Column(name = "answer")
     private String answer;
 
-    @Column(name = "set_id")
-    public int setId;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "set_id",
-            insertable = false, updatable = false,
             foreignKey = @ForeignKey(name = "flashcards_set_set_id_fk")
     )
     private FlashcardSet flashcardSet;
-
 
     public Flashcard() {
     }
@@ -43,10 +38,6 @@ public class Flashcard {
     public FlashcardSet getFlashcardSet() { return flashcardSet; }
 
     public void setFlashcardSet(FlashcardSet flashcardSet) { this.flashcardSet = flashcardSet; }
-
-    public  void setSetId(int setId) { this.setId = setId; }
-
-    public int getSetId() { return setId; }
 
     public int getId() {
         return id;

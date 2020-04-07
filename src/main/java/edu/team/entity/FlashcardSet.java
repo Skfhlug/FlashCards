@@ -17,7 +17,6 @@ public class FlashcardSet {
     private int id;
 
    @Column(name = "name")
-
     private String name;
 
     @Column(name = "category")
@@ -79,6 +78,11 @@ public class FlashcardSet {
     flashcard.setFlashcardSet(this);
     }
 
+    public void removeFlashCard(Flashcard flashcard) {
+        flashcards.remove(flashcard);
+        flashcard.setFlashcardSet(null);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -94,11 +98,7 @@ public class FlashcardSet {
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (category != null ? category.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        return result;
+        return Objects.hash(name, category, description);
     }
 
     @Override
@@ -108,6 +108,7 @@ public class FlashcardSet {
                 ", name='" + name + '\'' +
                 ", category='" + category + '\'' +
                 ", description='" + description + '\'' +
+                ", flashcards=" + flashcards + '\'' +
                 '}';
     }
 }
