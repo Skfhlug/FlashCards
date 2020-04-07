@@ -11,3 +11,26 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: x-large;
 }
+.footerLeft {
+    text-align: left;
+    background-color: royalblue;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    position: fixed;
+    float: bottom;
+    bottom: 0;
+    width: 800px;
+}
+.footerRight {
+    text-align: right;
+    position: fixed;
+    float: bottom;
+    float: right;
+    bottom: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    color: white;
+}
