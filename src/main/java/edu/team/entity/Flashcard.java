@@ -1,5 +1,6 @@
 package edu.team.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class Flashcard {
     private String answer;
 
     @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
     @JoinColumn(name = "set_id",
             foreignKey = @ForeignKey(name = "flashcards_set_set_id_fk")
     )

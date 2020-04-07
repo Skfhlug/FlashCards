@@ -53,5 +53,3 @@ present learning materials online.
     
 * IDE
     * IntelliJ IDEA
-
-testing
