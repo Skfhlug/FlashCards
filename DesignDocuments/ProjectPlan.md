@@ -6,22 +6,20 @@
 - [x]  Create Data Diagram
 - [x]  List Technologies that we need to used
 - [ ]  Document application
-- [ ] Build tables in Database (Suparin)
+- [x] Build tables in Database (Suparin)
 - [ ] Restructure Packages (Joel)
-- [ ] Create Pojos (Katya)
-- [ ] Create DAOS to access database (Jacob)
+- [x] Create Pojos (Katya)
+- [x] Create DAOS to access database (Jacob)
 - [ ] Define API Endpoints (Joel)
 - [ ] Begin writing out methods (all)
 
 ##### Week 2
 - [ ] Finish writing out methods (all)
 - [ ] Begin User Documentation (Katya)
-- [ ] Test out all methods ()
+- [x] Test out all methods ()
 - [ ] Deploy to AWS
 - [ ] Begin Presentation
-- [ ] Practice working on git branch
-- [x] Create Database for team project
-- [ ] Searching about API
+- [x] Practice working on git branch
 
 
 ##### Week 3
