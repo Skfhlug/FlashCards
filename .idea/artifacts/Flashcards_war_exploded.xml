@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Flashcards:war exploded">
+    <output-path>$PROJECT_DIR$/../Flashcards/target/Flashcards</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>Flashcards</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Flashcards" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/../Flashcards/target/Flashcards/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="Flashcards/web/Web" />
+    </root>
+  </artifact>
+</component>

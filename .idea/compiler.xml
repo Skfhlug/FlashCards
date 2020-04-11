@@ -10,6 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Flashcards" target="1.7" />
       <module name="FlashCards" target="8" />
     </bytecodeTargetLevel>
   </component>

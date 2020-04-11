@@ -53,7 +53,6 @@
           <element id="library" level="project" name="Maven: org.glassfish.jersey.media:jersey-media-jaxb:2.29.1" />
           <element id="library" level="project" name="Maven: jakarta.validation:jakarta.validation-api:2.0.2" />
           <element id="library" level="project" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.2" />
-          <element id="library" level="project" name="Maven: jakarta.activation:jakarta.activation-api:1.2.1" />
           <element id="library" level="project" name="Maven: jakarta.ws.rs:jakarta.ws.rs-api:2.1.6" />
           <element id="library" level="project" name="Maven: org.glassfish.jersey.inject:jersey-hk2:2.29.1" />
           <element id="library" level="project" name="Maven: org.glassfish.hk2:hk2-locator:2.6.1" />
@@ -63,6 +62,11 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.0" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.10.0" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.10.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.10.0" />
+          <element id="library" level="project" name="Maven: jakarta.activation:jakarta.activation-api:1.2.1" />
+          <element id="library" level="project" name="Maven: org.codehaus.woodstox:stax2-api:4.2" />
+          <element id="library" level="project" name="Maven: com.fasterxml.woodstox:woodstox-core:6.0.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
