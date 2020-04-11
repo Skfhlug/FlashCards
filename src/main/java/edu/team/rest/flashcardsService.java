@@ -37,10 +37,7 @@ public class flashcardsService {
      */
     XmlMapper xmlMapper = new XmlMapper();
 
-    private final String SUCCESS = "{'result':'success'}";
-    private final String FAILURE = "{'result':'failure'}";
-
-    /**
+   /**
      * Gets all sets, returning xml.
      *
      * @return the all sets
@@ -389,13 +386,7 @@ public class flashcardsService {
         String output = "";
 
         FlashcardSet newSet = new FlashcardSet(name, category, description);
-        int result = setDao.insert(newSet);
-
-        if(result == 1) {
-            output = SUCCESS;
-        } else {
-            output = FAILURE;
-        }
+        setDao.insert(newSet);
 
         return Response.status(200).entity(output).build();
     }
