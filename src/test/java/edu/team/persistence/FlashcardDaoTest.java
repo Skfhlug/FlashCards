@@ -12,10 +12,22 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The type Flashcard dao test.
+ */
 public class FlashcardDaoTest {
+    /**
+     * The Generic dao.
+     */
     GenericDao<Flashcard> genericDao;
+    /**
+     * The Generic dao flashcard set.
+     */
     GenericDao<FlashcardSet> genericDaoFlashcardSet;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
 
@@ -26,18 +38,27 @@ public class FlashcardDaoTest {
         database.runSQL("cleandb.sql");
     }
 
+    /**
+     * Gets all flashcards.
+     */
     @Test
     void getAllFlashcards() {
         List<Flashcard> flashcards = genericDao.getAll();
         assertEquals(14, flashcards.size());
     }
 
+    /**
+     * Gets id success.
+     */
     @Test
     void getIdSuccess() {
         Flashcard retrievedFlashcard = genericDao.getById(13);
         assertEquals(13, retrievedFlashcard.getId());
     }
 
+    /**
+     * Insert success.
+     */
     @Test
     void insertSuccess() {
         FlashcardSet flashcardSet = new FlashcardSet("Javascript", "Computer Science", "Simple computer science questions");
@@ -49,6 +70,9 @@ public class FlashcardDaoTest {
         assertEquals(insertedFlashcard.getAnswer(), flashcard.getAnswer());
     }
 
+    /**
+     * Delete success.
+     */
     @Test
     void deleteSuccess() {
         Flashcard deletedFlashcard = genericDao.getById(3);
@@ -59,6 +83,9 @@ public class FlashcardDaoTest {
         assertNotNull(deletedFlashcardSet);
     }
 
+    /**
+     * Update flashcard success.
+     */
     @Test
     void updateFlashcardSuccess() {
         Flashcard flashcardToUpdate = genericDao.getById(11);
@@ -67,12 +94,18 @@ public class FlashcardDaoTest {
         assertEquals(flashcardToUpdate.getAnswer(), "true");
     }
 
+    /**
+     * Gets by property equal success.
+     */
     @Test
     void getByPropertyEqualSuccess() {
         List<Flashcard> flashcard = genericDao.getByPropertyEqual("question", "What was the first name of JAVA?");
         assertEquals(1, flashcard.size());
     }
 
+    /**
+     * Gets property like success.
+     */
     @Test
     void getPropertyLikeSuccess() {
         List<Flashcard> flashcard = genericDao.getByPropertyLike("question", "What is the capital of");
