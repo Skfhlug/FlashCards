@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import edu.team.entity.Flashcard;
 import edu.team.entity.FlashcardSet;
-import edu.team.exceptions.NotFound;
 import edu.team.persistence.GenericDao;
 
 import javax.ws.rs.*;
@@ -98,14 +97,8 @@ public class flashcardsService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/sets/{id}")
-    public Response getSetByIdJson(@PathParam("id") int id) throws JsonProcessingException, NotFound {
+    public Response getSetByIdJson(@PathParam("id") int id) throws JsonProcessingException {
         FlashcardSet set = (FlashcardSet) setDao.getById(id);
-
-        if (set == null) {
-            throw new NotFound("Set with id " + id + " was not found");
-            //return Response.status(404).entity("Set not found").build();
-        }
-
         String output = jsonMapper.writeValueAsString(set);
 
         return Response.status(200).entity(output).build();
