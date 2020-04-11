@@ -120,7 +120,6 @@ public class flashcardsService {
 
         if (set == null) {
             throw new NotFoundException("Set with id " + id + " was not found");
-            //return Response.status(404).entity("Set not found").build();
         }
 
         return set;
@@ -169,7 +168,7 @@ public class flashcardsService {
     private List<FlashcardSet> searchSetByName(String searchTerm) throws NotFoundException {
         List<FlashcardSet> results = setDao.getByPropertyLike("name", searchTerm);
 
-        if (results == null) {
+        if (results.size() == 0) {
             throw new NotFoundException("There were no sets containing '" + searchTerm + "' in the name");
         }
 
@@ -219,7 +218,7 @@ public class flashcardsService {
     private List<FlashcardSet> searchSetByCategory(String searchTerm) throws NotFoundException {
         List<FlashcardSet> results = setDao.getByPropertyLike("category", searchTerm);
 
-        if (results == null) {
+        if (results.size() == 0) {
             throw new NotFoundException("There were no sets containing '" + searchTerm + "' in their category");
         }
 
@@ -273,7 +272,7 @@ public class flashcardsService {
 
         Set<Flashcard> cardsInSet = set.getFlashcards();
 
-        if (cardsInSet == null) {
+        if (cardsInSet.size() == 0) {
             throw new NotFoundException("There were no cards in set with id " + id);
         }
 
@@ -322,8 +321,8 @@ public class flashcardsService {
     @GET
     @Produces(MediaType.APPLICATION_XML)
     @Path("/cards/{id}/xml")
-    public Response getCardByIdXml(@PathParam("id") int id) throws JsonProcessingException {
-        Flashcard card = (Flashcard) flashcardDao.getById(id);
+    public Response getCardByIdXml(@PathParam("id") int id) throws JsonProcessingException, NotFoundException {
+        Flashcard card = searchCardById(id);
         String output = xmlMapper.writeValueAsString(card);
 
         return Response.status(200).entity(output).build();
@@ -339,11 +338,27 @@ public class flashcardsService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/cards/{id}")
-    public Response getCardByIdJson(@PathParam("id") int id) throws JsonProcessingException {
-        Flashcard card = (Flashcard) flashcardDao.getById(id);
+    public Response getCardByIdJson(@PathParam("id") int id) throws JsonProcessingException, NotFoundException {
+        Flashcard card = searchCardById(id);
         String output = jsonMapper.writeValueAsString(card);
 
         return Response.status(200).entity(output).build();
+    }
+
+    /**
+     * Search for a card by id
+     * @param id
+     * @return
+     * @throws NotFoundException
+     */
+    private Flashcard searchCardById(int id) throws NotFoundException {
+        Flashcard card = (Flashcard) flashcardDao.getById(id);
+
+        if (card == null) {
+            throw new NotFoundException("Card with id " + id + " was not found");
+        }
+
+        return card;
     }
 
     /**
@@ -389,10 +404,10 @@ public class flashcardsService {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Response addCardToSet(@FormParam("question") String question,
                                  @FormParam("answer") String answer,
-                                 @FormParam("id") int setId) {
+                                 @FormParam("id") int setId) throws NotFoundException {
         String output = "";
 
-        FlashcardSet set = (FlashcardSet) setDao.getById(setId);
+        FlashcardSet set = searchSetById(setId);
         Flashcard newCard = new Flashcard(set, question, answer);
         setDao.insert(newCard);
 
@@ -415,10 +430,10 @@ public class flashcardsService {
     public Response updateSet(@FormParam("id") int id,
                               @FormParam("name") String name,
                               @FormParam("category") String category,
-                              @FormParam("description") String description) {
+                              @FormParam("description") String description) throws NotFoundException {
         String output = "";
 
-        FlashcardSet set = (FlashcardSet) setDao.getById(id);
+        FlashcardSet set = searchSetById(id);
 
         if (name.length() > 0) {
             set.setName(name);
@@ -453,10 +468,10 @@ public class flashcardsService {
     public Response updateCard(@FormParam("id") int id,
                                @FormParam("question") String question,
                                @FormParam("answer") String answer,
-                               @FormParam("setId") int setId) {
+                               @FormParam("setId") int setId) throws NotFoundException {
         String output = "";
 
-        Flashcard card = (Flashcard) flashcardDao.getById(id);
+        Flashcard card = searchCardById(id);
 
         if (question.length() > 0) {
             card.setQuestion(question);
