@@ -54,3 +54,7 @@ present learning materials online.
 * IDE
     * IntelliJ IDEA
 
+* REST Dependencies
+    * Jersey
+    * Jackson 
+
