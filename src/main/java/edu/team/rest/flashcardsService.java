@@ -5,12 +5,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import edu.team.entity.Flashcard;
 import edu.team.entity.FlashcardSet;
+import edu.team.exceptions.NotFoundException;
 import edu.team.persistence.GenericDao;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Set;
 
 /**
  * The type Flashcards service.
@@ -76,12 +78,13 @@ public class flashcardsService {
      * @param id the id
      * @return the set by id
      * @throws JsonProcessingException the json processing exception
+     * @throws NotFoundException       the not found exception
      */
     @GET
     @Produces(MediaType.APPLICATION_XML)
     @Path("/sets/{id}/xml")
-    public Response getSetByIdXml(@PathParam("id") int id) throws JsonProcessingException {
-        FlashcardSet set = (FlashcardSet) setDao.getById(id);
+    public Response getSetByIdXml(@PathParam("id") int id) throws JsonProcessingException, NotFoundException {
+        FlashcardSet set = searchSetById(id);
         String output = xmlMapper.writeValueAsString(set);
 
         return Response.status(200).entity(output).build();
@@ -93,83 +96,139 @@ public class flashcardsService {
      * @param id the id
      * @return the set by id
      * @throws JsonProcessingException the json processing exception
+     * @throws NotFoundException       the not found exception
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/sets/{id}")
-    public Response getSetByIdJson(@PathParam("id") int id) throws JsonProcessingException {
-        FlashcardSet set = (FlashcardSet) setDao.getById(id);
+    public Response getSetByIdJson(@PathParam("id") int id) throws JsonProcessingException, NotFoundException {
+        FlashcardSet set = searchSetById(id);
+
         String output = jsonMapper.writeValueAsString(set);
 
         return Response.status(200).entity(output).build();
     }
 
     /**
-     * Search for set response, returning xml.
+     * Search for a set by id
+     *
+     * @param id
+     * @return
+     * @throws NotFoundException
+     */
+    private FlashcardSet searchSetById(int id) throws NotFoundException {
+        FlashcardSet set = (FlashcardSet) setDao.getById(id);
+
+        if (set == null) {
+            throw new NotFoundException("Set with id " + id + " was not found");
+        }
+
+        return set;
+    }
+
+    /**
+     * Search for set by name, returning xml.
      *
      * @param searchTerm the search term
      * @return the response
      * @throws JsonProcessingException the json processing exception
+     * @throws NotFoundException       the not found exception
      */
     @GET
     @Produces(MediaType.APPLICATION_XML)
     @Path("/sets/search/{searchTerm}/xml")
-    public Response searchForSetXml(@PathParam("searchTerm") String searchTerm) throws JsonProcessingException {
-        List<FlashcardSet> sets = setDao.getByPropertyLike("name", searchTerm);
+    public Response searchForSetXml(@PathParam("searchTerm") String searchTerm) throws JsonProcessingException, NotFoundException {
+        List<FlashcardSet> sets = searchSetByName(searchTerm);
         String output = xmlMapper.writeValueAsString(sets);
 
         return Response.status(200).entity(output).build();
     }
 
     /**
-     * Search for set response.
+     * Search for set by name.
      *
      * @param searchTerm the search term
      * @return the response
      * @throws JsonProcessingException the json processing exception
+     * @throws NotFoundException       the not found exception
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/sets/search/{searchTerm}")
-    public Response searchForSetJson(@PathParam("searchTerm") String searchTerm) throws JsonProcessingException {
-        List<FlashcardSet> sets = setDao.getByPropertyLike("name", searchTerm);
+    public Response searchForSetJson(@PathParam("searchTerm") String searchTerm) throws JsonProcessingException, NotFoundException {
+        List<FlashcardSet> sets = searchSetByName(searchTerm);
         String output = jsonMapper.writeValueAsString(sets);
 
         return Response.status(200).entity(output).build();
     }
 
     /**
-     * Search for set by category response, returning xml.
+     * Search for a set by name (w/ exception handling)
+     *
+     * @param searchTerm
+     * @return
+     * @throws NotFoundException
+     */
+    private List<FlashcardSet> searchSetByName(String searchTerm) throws NotFoundException {
+        List<FlashcardSet> results = setDao.getByPropertyLike("name", searchTerm);
+
+        if (results.size() == 0) {
+            throw new NotFoundException("There were no sets containing '" + searchTerm + "' in the name");
+        }
+
+        return results;
+    }
+
+    /**
+     * Search for set by category, returning xml.
      *
      * @param searchTerm the search term
      * @return the response
      * @throws JsonProcessingException the json processing exception
+     * @throws NotFoundException       the not found exception
      */
     @GET
     @Produces(MediaType.APPLICATION_XML)
     @Path("/sets/search/category/{searchTerm}/xml")
-    public Response searchForSetByCategoryXml(@PathParam("searchTerm") String searchTerm) throws JsonProcessingException {
-        List<FlashcardSet> sets = setDao.getByPropertyLike("category", searchTerm);
+    public Response searchForSetByCategoryXml(@PathParam("searchTerm") String searchTerm) throws JsonProcessingException, NotFoundException {
+        List<FlashcardSet> sets = searchSetByCategory(searchTerm);
         String output = xmlMapper.writeValueAsString(sets);
 
         return Response.status(200).entity(output).build();
     }
 
     /**
-     * Search for set by category response.
+     * Search for set by category.
      *
      * @param searchTerm the search term
      * @return the response
      * @throws JsonProcessingException the json processing exception
+     * @throws NotFoundException       the not found exception
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/sets/search/category/{searchTerm}")
-    public Response searchForSetByCategoryJson(@PathParam("searchTerm") String searchTerm) throws JsonProcessingException {
-        List<FlashcardSet> sets = setDao.getByPropertyLike("category", searchTerm);
+    public Response searchForSetByCategoryJson(@PathParam("searchTerm") String searchTerm) throws JsonProcessingException, NotFoundException {
+        List<FlashcardSet> sets = searchSetByCategory(searchTerm);
         String output = jsonMapper.writeValueAsString(sets);
 
         return Response.status(200).entity(output).build();
+    }
+
+    /**
+     * Search for a set by category (w/ exception handling)
+     * @param searchTerm
+     * @return
+     * @throws NotFoundException
+     */
+    private List<FlashcardSet> searchSetByCategory(String searchTerm) throws NotFoundException {
+        List<FlashcardSet> results = setDao.getByPropertyLike("category", searchTerm);
+
+        if (results.size() == 0) {
+            throw new NotFoundException("There were no sets containing '" + searchTerm + "' in their category");
+        }
+
+        return results;
     }
 
     /**
@@ -178,13 +237,13 @@ public class flashcardsService {
      * @param id the id
      * @return the cards from set
      * @throws JsonProcessingException the json processing exception
+     * @throws NotFoundException       the not found exception
      */
     @GET
     @Produces(MediaType.APPLICATION_XML)
     @Path("/sets/cards/{id}/xml")
-    public Response getCardsFromSetXml(@PathParam("id") int id) throws JsonProcessingException {
-        FlashcardSet set = (FlashcardSet) setDao.getById(id);
-        String output = xmlMapper.writeValueAsString(set.getFlashcards());
+    public Response getCardsFromSetXml(@PathParam("id") int id) throws JsonProcessingException, NotFoundException {
+        String output = xmlMapper.writeValueAsString(getCardsInSet(id));
 
         return Response.status(200).entity(output).build();
     }
@@ -195,15 +254,37 @@ public class flashcardsService {
      * @param id the id
      * @return the cards from set
      * @throws JsonProcessingException the json processing exception
+     * @throws NotFoundException       the not found exception
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/sets/cards/{id}")
-    public Response getCardsFromSetJson(@PathParam("id") int id) throws JsonProcessingException {
-        FlashcardSet set = (FlashcardSet) setDao.getById(id);
-        String output = jsonMapper.writeValueAsString(set.getFlashcards());
+    public Response getCardsFromSetJson(@PathParam("id") int id) throws JsonProcessingException, NotFoundException {
+        String output = jsonMapper.writeValueAsString(getCardsInSet(id));
 
         return Response.status(200).entity(output).build();
+    }
+
+    /**
+     * Get all cards in a set by set id
+     * @param id
+     * @return
+     * @throws NotFoundException
+     */
+    private Set<Flashcard> getCardsInSet(int id) throws NotFoundException {
+        FlashcardSet set = (FlashcardSet) setDao.getById(id);
+
+        if (set == null) {
+            throw new NotFoundException("Set with id " + id + " was not found");
+        }
+
+        Set<Flashcard> cardsInSet = set.getFlashcards();
+
+        if (cardsInSet.size() == 0) {
+            throw new NotFoundException("There were no cards in set with id " + id);
+        }
+
+        return cardsInSet;
     }
 
     /**
@@ -244,12 +325,13 @@ public class flashcardsService {
      * @param id the id
      * @return the card by id
      * @throws JsonProcessingException the json processing exception
+     * @throws NotFoundException       the not found exception
      */
     @GET
     @Produces(MediaType.APPLICATION_XML)
     @Path("/cards/{id}/xml")
-    public Response getCardByIdXml(@PathParam("id") int id) throws JsonProcessingException {
-        Flashcard card = (Flashcard) flashcardDao.getById(id);
+    public Response getCardByIdXml(@PathParam("id") int id) throws JsonProcessingException, NotFoundException {
+        Flashcard card = searchCardById(id);
         String output = xmlMapper.writeValueAsString(card);
 
         return Response.status(200).entity(output).build();
@@ -261,19 +343,36 @@ public class flashcardsService {
      * @param id the id
      * @return the card by id
      * @throws JsonProcessingException the json processing exception
+     * @throws NotFoundException       the not found exception
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/cards/{id}")
-    public Response getCardByIdJson(@PathParam("id") int id) throws JsonProcessingException {
-        Flashcard card = (Flashcard) flashcardDao.getById(id);
+    public Response getCardByIdJson(@PathParam("id") int id) throws JsonProcessingException, NotFoundException {
+        Flashcard card = searchCardById(id);
         String output = jsonMapper.writeValueAsString(card);
 
         return Response.status(200).entity(output).build();
     }
 
     /**
-     * Create set response.
+     * Search for a card by id (w/ exception handling)
+     * @param id
+     * @return
+     * @throws NotFoundException
+     */
+    private Flashcard searchCardById(int id) throws NotFoundException {
+        Flashcard card = (Flashcard) flashcardDao.getById(id);
+
+        if (card == null) {
+            throw new NotFoundException("Card with id " + id + " was not found");
+        }
+
+        return card;
+    }
+
+    /**
+     * Create Flashcard Set.
      *
      * @param name        the name
      * @param category    the category
@@ -302,12 +401,13 @@ public class flashcardsService {
     }
 
     /**
-     * Add card to set response.
+     * Add card to Flashcard Set.
      *
      * @param question the question
      * @param answer   the answer
      * @param setId    the set id
      * @return the response
+     * @throws NotFoundException the not found exception
      */
     @POST
     @Path("/sets/cards")
@@ -315,10 +415,10 @@ public class flashcardsService {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Response addCardToSet(@FormParam("question") String question,
                                  @FormParam("answer") String answer,
-                                 @FormParam("id") int setId) {
+                                 @FormParam("id") int setId) throws NotFoundException {
         String output = "";
 
-        FlashcardSet set = (FlashcardSet) setDao.getById(setId);
+        FlashcardSet set = searchSetById(setId);
         Flashcard newCard = new Flashcard(set, question, answer);
         setDao.insert(newCard);
 
@@ -326,13 +426,14 @@ public class flashcardsService {
     }
 
     /**
-     * Update set response.
+     * Update Flashcard Set.
      *
      * @param id          the id
      * @param name        the name
      * @param category    the category
      * @param description the description
      * @return the response
+     * @throws NotFoundException the not found exception
      */
     @PUT
     @Path("/sets/update")
@@ -341,10 +442,10 @@ public class flashcardsService {
     public Response updateSet(@FormParam("id") int id,
                               @FormParam("name") String name,
                               @FormParam("category") String category,
-                              @FormParam("description") String description) {
+                              @FormParam("description") String description) throws NotFoundException {
         String output = "";
 
-        FlashcardSet set = (FlashcardSet) setDao.getById(id);
+        FlashcardSet set = searchSetById(id);
 
         if (name.length() > 0) {
             set.setName(name);
@@ -364,13 +465,14 @@ public class flashcardsService {
     }
 
     /**
-     * Update card response.
+     * Update Flashcard.
      *
      * @param id       the id
      * @param question the question
      * @param answer   the answer
      * @param setId    the set id
      * @return the response
+     * @throws NotFoundException the not found exception
      */
     @PUT
     @Path("/cards/update")
@@ -379,10 +481,10 @@ public class flashcardsService {
     public Response updateCard(@FormParam("id") int id,
                                @FormParam("question") String question,
                                @FormParam("answer") String answer,
-                               @FormParam("setId") int setId) {
+                               @FormParam("setId") int setId) throws NotFoundException {
         String output = "";
 
-        Flashcard card = (Flashcard) flashcardDao.getById(id);
+        Flashcard card = searchCardById(id);
 
         if (question.length() > 0) {
             card.setQuestion(question);
