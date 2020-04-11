@@ -119,14 +119,15 @@
       <version>${jackson-version}</version>
     </dependency>
 
-<<<<<<< HEAD
-    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-
-=======
->>>>>>> e6c03d621b10b824edfc1d6ad8510959eafa77c8
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
+      <version>${jackson-version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-xml</artifactId>
       <version>${jackson-version}</version>
     </dependency>
   </dependencies>
