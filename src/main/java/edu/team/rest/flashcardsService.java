@@ -13,15 +13,33 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
+/**
+ * The type Flashcards service.
+ */
 @Path("/flashcard")
-public class flashcardService {
+public class flashcardsService {
+    /**
+     * The Flashcard dao.
+     */
     GenericDao flashcardDao = new GenericDao(Flashcard.class);
+    /**
+     * The Set dao.
+     */
     GenericDao setDao = new GenericDao(FlashcardSet.class);
+    /**
+     * The Mapper.
+     */
     ObjectMapper mapper = new ObjectMapper();
 
     private final String SUCCESS = "{'result':'success'}";
     private final String FAILURE = "{'result':'failure'}";
 
+    /**
+     * Gets all sets.
+     *
+     * @return the all sets
+     * @throws JsonProcessingException the json processing exception
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/sets")
@@ -32,6 +50,13 @@ public class flashcardService {
         return Response.status(200).entity(output).build();
     }
 
+    /**
+     * Gets set by id.
+     *
+     * @param id the id
+     * @return the set by id
+     * @throws JsonProcessingException the json processing exception
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/sets/{id}")
@@ -42,6 +67,13 @@ public class flashcardService {
         return Response.status(200).entity(output).build();
     }
 
+    /**
+     * Search for set response.
+     *
+     * @param searchTerm the search term
+     * @return the response
+     * @throws JsonProcessingException the json processing exception
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/sets/search/{searchTerm}")
@@ -52,6 +84,13 @@ public class flashcardService {
         return Response.status(200).entity(output).build();
     }
 
+    /**
+     * Search for set by category response.
+     *
+     * @param searchTerm the search term
+     * @return the response
+     * @throws JsonProcessingException the json processing exception
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/sets/search/category/{searchTerm}")
@@ -62,6 +101,13 @@ public class flashcardService {
         return Response.status(200).entity(output).build();
     }
 
+    /**
+     * Gets cards from set.
+     *
+     * @param id the id
+     * @return the cards from set
+     * @throws JsonProcessingException the json processing exception
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/sets/cards/{id}")
@@ -72,6 +118,12 @@ public class flashcardService {
         return Response.status(200).entity(output).build();
     }
 
+    /**
+     * Gets all cards.
+     *
+     * @return the all cards
+     * @throws JsonProcessingException the json processing exception
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/cards")
@@ -82,6 +134,13 @@ public class flashcardService {
         return Response.status(200).entity(output).build();
     }
 
+    /**
+     * Gets card by id.
+     *
+     * @param id the id
+     * @return the card by id
+     * @throws JsonProcessingException the json processing exception
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/cards/{id}")
@@ -92,6 +151,14 @@ public class flashcardService {
         return Response.status(200).entity(output).build();
     }
 
+    /**
+     * Create set response.
+     *
+     * @param name        the name
+     * @param category    the category
+     * @param description the description
+     * @return the response
+     */
     @POST
     @Path("/sets")
     @Produces(MediaType.APPLICATION_JSON)
@@ -113,6 +180,14 @@ public class flashcardService {
         return Response.status(200).entity(output).build();
     }
 
+    /**
+     * Add card to set response.
+     *
+     * @param question the question
+     * @param answer   the answer
+     * @param setId    the set id
+     * @return the response
+     */
     @POST
     @Path("/sets/cards")
     @Produces(MediaType.APPLICATION_JSON)
@@ -129,6 +204,15 @@ public class flashcardService {
         return Response.status(200).entity(output).build();
     }
 
+    /**
+     * Update set response.
+     *
+     * @param id          the id
+     * @param name        the name
+     * @param category    the category
+     * @param description the description
+     * @return the response
+     */
     @PUT
     @Path("/sets/update")
     @Produces(MediaType.APPLICATION_JSON)
@@ -158,6 +242,15 @@ public class flashcardService {
         return Response.status(200).entity(output).build();
     }
 
+    /**
+     * Update card response.
+     *
+     * @param id       the id
+     * @param question the question
+     * @param answer   the answer
+     * @param setId    the set id
+     * @return the response
+     */
     @PUT
     @Path("/cards/update")
     @Produces(MediaType.APPLICATION_JSON)
