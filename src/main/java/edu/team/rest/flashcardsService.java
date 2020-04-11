@@ -55,7 +55,7 @@ public class flashcardsService {
     }
 
     /**
-     * Gets all sets, returning json.
+     * Gets all sets.
      *
      * @return the all sets
      * @throws JsonProcessingException the json processing exception
@@ -71,7 +71,7 @@ public class flashcardsService {
     }
 
     /**
-     * Gets set by id.
+     * Gets set by id, returning xml.
      *
      * @param id the id
      * @return the set by id
@@ -105,7 +105,7 @@ public class flashcardsService {
     }
 
     /**
-     * Search for set response.
+     * Search for set response, returning xml.
      *
      * @param searchTerm the search term
      * @return the response
@@ -139,7 +139,7 @@ public class flashcardsService {
     }
 
     /**
-     * Search for set by category response.
+     * Search for set by category response, returning xml.
      *
      * @param searchTerm the search term
      * @return the response
@@ -173,7 +173,7 @@ public class flashcardsService {
     }
 
     /**
-     * Gets cards from set.
+     * Gets cards from set, returning xml.
      *
      * @param id the id
      * @return the cards from set
@@ -207,7 +207,7 @@ public class flashcardsService {
     }
 
     /**
-     * Gets all cards.
+     * Gets all cards, returning xml.
      *
      * @return the all cards
      * @throws JsonProcessingException the json processing exception
@@ -239,7 +239,7 @@ public class flashcardsService {
     }
 
     /**
-     * Gets card by id.
+     * Gets card by id, returning xml.
      *
      * @param id the id
      * @return the card by id
