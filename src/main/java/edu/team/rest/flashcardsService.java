@@ -57,7 +57,7 @@ public class flashcardsService {
     }
 
     /**
-     * Gets all sets, returning json.
+     * Gets all sets.
      *
      * @return the all sets
      * @throws JsonProcessingException the json processing exception
@@ -73,7 +73,7 @@ public class flashcardsService {
     }
 
     /**
-     * Gets set by id.
+     * Gets set by id, returning xml.
      *
      * @param id the id
      * @return the set by id
@@ -111,6 +111,7 @@ public class flashcardsService {
 
     /**
      * Search for a set by id
+     *
      * @param id
      * @return
      * @throws NotFoundException
@@ -126,11 +127,12 @@ public class flashcardsService {
     }
 
     /**
-     * Search for set response.
+     * Search for set by name, returning xml.
      *
      * @param searchTerm the search term
      * @return the response
      * @throws JsonProcessingException the json processing exception
+     * @throws NotFoundException       the not found exception
      */
     @GET
     @Produces(MediaType.APPLICATION_XML)
@@ -143,11 +145,12 @@ public class flashcardsService {
     }
 
     /**
-     * Search for set response.
+     * Search for set by name.
      *
      * @param searchTerm the search term
      * @return the response
      * @throws JsonProcessingException the json processing exception
+     * @throws NotFoundException       the not found exception
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -160,7 +163,8 @@ public class flashcardsService {
     }
 
     /**
-     * Search for a set by search term
+     * Search for a set by name (w/ exception handling)
+     *
      * @param searchTerm
      * @return
      * @throws NotFoundException
@@ -176,11 +180,12 @@ public class flashcardsService {
     }
 
     /**
-     * Search for set by category response.
+     * Search for set by category, returning xml.
      *
      * @param searchTerm the search term
      * @return the response
      * @throws JsonProcessingException the json processing exception
+     * @throws NotFoundException       the not found exception
      */
     @GET
     @Produces(MediaType.APPLICATION_XML)
@@ -193,11 +198,12 @@ public class flashcardsService {
     }
 
     /**
-     * Search for set by category response.
+     * Search for set by category.
      *
      * @param searchTerm the search term
      * @return the response
      * @throws JsonProcessingException the json processing exception
+     * @throws NotFoundException       the not found exception
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -210,7 +216,7 @@ public class flashcardsService {
     }
 
     /**
-     * Search for a set by search term
+     * Search for a set by category (w/ exception handling)
      * @param searchTerm
      * @return
      * @throws NotFoundException
@@ -226,11 +232,12 @@ public class flashcardsService {
     }
 
     /**
-     * Gets cards from set.
+     * Gets cards from set, returning xml.
      *
      * @param id the id
      * @return the cards from set
      * @throws JsonProcessingException the json processing exception
+     * @throws NotFoundException       the not found exception
      */
     @GET
     @Produces(MediaType.APPLICATION_XML)
@@ -247,6 +254,7 @@ public class flashcardsService {
      * @param id the id
      * @return the cards from set
      * @throws JsonProcessingException the json processing exception
+     * @throws NotFoundException       the not found exception
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -258,7 +266,7 @@ public class flashcardsService {
     }
 
     /**
-     * Get all cards in a set
+     * Get all cards in a set by set id
      * @param id
      * @return
      * @throws NotFoundException
@@ -280,7 +288,7 @@ public class flashcardsService {
     }
 
     /**
-     * Gets all cards.
+     * Gets all cards, returning xml.
      *
      * @return the all cards
      * @throws JsonProcessingException the json processing exception
@@ -312,11 +320,12 @@ public class flashcardsService {
     }
 
     /**
-     * Gets card by id.
+     * Gets card by id, returning xml.
      *
      * @param id the id
      * @return the card by id
      * @throws JsonProcessingException the json processing exception
+     * @throws NotFoundException       the not found exception
      */
     @GET
     @Produces(MediaType.APPLICATION_XML)
@@ -334,6 +343,7 @@ public class flashcardsService {
      * @param id the id
      * @return the card by id
      * @throws JsonProcessingException the json processing exception
+     * @throws NotFoundException       the not found exception
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -346,7 +356,7 @@ public class flashcardsService {
     }
 
     /**
-     * Search for a card by id
+     * Search for a card by id (w/ exception handling)
      * @param id
      * @return
      * @throws NotFoundException
@@ -362,7 +372,7 @@ public class flashcardsService {
     }
 
     /**
-     * Create set response.
+     * Create Flashcard Set.
      *
      * @param name        the name
      * @param category    the category
@@ -391,12 +401,13 @@ public class flashcardsService {
     }
 
     /**
-     * Add card to set response.
+     * Add card to Flashcard Set.
      *
      * @param question the question
      * @param answer   the answer
      * @param setId    the set id
      * @return the response
+     * @throws NotFoundException the not found exception
      */
     @POST
     @Path("/sets/cards")
@@ -415,13 +426,14 @@ public class flashcardsService {
     }
 
     /**
-     * Update set response.
+     * Update Flashcard Set.
      *
      * @param id          the id
      * @param name        the name
      * @param category    the category
      * @param description the description
      * @return the response
+     * @throws NotFoundException the not found exception
      */
     @PUT
     @Path("/sets/update")
@@ -453,13 +465,14 @@ public class flashcardsService {
     }
 
     /**
-     * Update card response.
+     * Update Flashcard.
      *
      * @param id       the id
      * @param question the question
      * @param answer   the answer
      * @param setId    the set id
      * @return the response
+     * @throws NotFoundException the not found exception
      */
     @PUT
     @Path("/cards/update")
