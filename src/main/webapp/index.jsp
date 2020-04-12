@@ -7,6 +7,23 @@
 
 <body>
 <h1>Welcome to Flashcards!</h1>
+
+<form action="flashcardServlet" method="GET">
+<!--
+    <div class="form-group">
+        <label>Type:</label>
+        <input type="radio" name="category" value="1" checked> IT &nbsp;
+        <input type="radio" name="category" value="2" > Chemistry &nbsp;
+        <input type="radio" name="category" value="3"> Algebra &nbsp;
+        <input type="radio" name="category" value="4" > Geography &nbsp;
+
+    </div>-->
+    <br><br>
+    <input type="submit" name="" value="Start Quizs" />
+
+</form>
+
+
 <footer>
     <div class="footerLeft">
     <p>create by</p>
