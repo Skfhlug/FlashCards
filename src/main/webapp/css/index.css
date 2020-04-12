@@ -34,3 +34,25 @@ h1 {
     font-size: medium;
     color: white;
 }
+#question {
+    padding: 5px 0;
+    border: 5px;
+    background-color: coral;
+    color:white;
+    font-size: 50px;
+    text-align: center;
+}
+#answer {
+    padding: 5px 0;
+    border: 5px;
+    background-color: coral;
+    color:white;
+    font-size: 50px;
+    text-align: center;
+}
+#qanda {
+    text-align: center;
+    background-color: #a4d1e1;
+    font-size: 20px;
+    width: 800px;
+}
