@@ -438,15 +438,15 @@ public class flashcardsService {
 
         FlashcardSet set = searchSetById(id);
 
-        if (name.length() > 0) {
+        if (name != null) {
             set.setName(name);
         }
 
-        if (category.length() > 0) {
+        if (category != null) {
             set.setCategory(category);
         }
 
-        if (description.length() > 0) {
+        if (description != null) {
             set.setDescription(description);
         }
 
@@ -477,17 +477,19 @@ public class flashcardsService {
 
         Flashcard card = searchCardById(id);
 
-        if (question.length() > 0) {
+        if (question != null) {
             card.setQuestion(question);
         }
 
-        if (answer.length() > 0) {
+        if (answer != null) {
             card.setAnswer(answer);
         }
 
-        if (setId >= 0) {
-            FlashcardSet set = (FlashcardSet) setDao.getById(setId);
-            card.setFlashcardSet(set);
+        if (setId > 0) {
+            FlashcardSet set = searchSetById(setId);
+            if (card.getFlashcardSet().getId() != set.getId()) {
+                card.setFlashcardSet(set);
+            }
         }
 
         setDao.saveOrUpdate(card);
