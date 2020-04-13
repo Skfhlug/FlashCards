@@ -19,7 +19,7 @@
 
     </div>-->
     <br><br>
-    <input type="submit" name="" value="Start Quizs" />
+    <input type="submit" name="" value="Start Quiz" />
 
 </form>
 
