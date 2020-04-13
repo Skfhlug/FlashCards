@@ -33,7 +33,7 @@ present learning materials online.
 
 ###### Return Format
 * json
-* html
+* xml
 
 ##### Resources
 
