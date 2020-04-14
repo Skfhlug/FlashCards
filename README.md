@@ -23,11 +23,9 @@ present learning materials online.
 * getallSets
 * getSetById
 * getAllCardsOfSet
-* searchSetsByName 
-* searchSetsByCategory
-
-* getAllCards
 * getCardById
+* searchForSets 
+* searchSetsByCategory
 
 ###### POST
 * createSet
