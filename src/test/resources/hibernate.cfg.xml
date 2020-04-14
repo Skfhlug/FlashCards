@@ -10,7 +10,7 @@
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>	
 
         <property name="connection.username">root</property>
-        <property name="connection.password">student</property>
+        <property name="connection.password">4donegAl</property>
         <!--<property name="connection.password">uBUs4XoxU9UsEw</property>-->
 
         <property name="hibernate.c3p0.min_size">5</property>	

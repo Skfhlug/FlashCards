@@ -7,6 +7,7 @@
 
 <body>
 <h1>Welcome to Flashcards!</h1>
+<a href="documentation/index.html">Documentation</a>
 
 <form action="flashcardServlet" method="GET">
 <!--
