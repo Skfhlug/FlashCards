@@ -23,6 +23,7 @@ h1 {
     float: bottom;
     bottom: 0;
     width: 800px;
+    padding-left: 10px;
 }
 .footerRight {
     text-align: right;

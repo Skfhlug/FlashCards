@@ -40,7 +40,7 @@ CREATE TABLE `flashcard` (
 
 LOCK TABLES `flashcard` WRITE;
 /*!40000 ALTER TABLE `flashcard` DISABLE KEYS */;
-INSERT INTO `flashcard` VALUES (1,'Java is short for \"JavaScript\".','false',1),(2,'(X+2)/4 = 20 What is X?','78',3),(3,'In Java, it is possible to inherit attributes and methods from one class to another.','True',1),(4,'Who created java language?','James Gosling, Mike Sheridan, Patrick Naughton',1),(5,'What was the first name of JAVA?','Greentalk',1),(6,'What was the second name of JAVA?','Oak, Oak is a symbol of strength and chosen as a national tree of many countries like the U.S.A., France, Germany, Romania, etc.In 1995, Oak was renamed as \"Java\" because it was already a trademark by Oak Technologies.',1),(7,'4+5+6+7 = ?','22',3),(8,'what is the capital of Thailand?','Bangkok',4),(9,'What is the capital of germany?','Berlin',4),(10,'11+5+3-3-5-11 = ?','0',3),(11,'What is the capital of China?','Beijing',4),(12,'2X + 6 = 10 What is X?','2',3),(13,'What is the capital of russia?','Moscow',4),(14,'What is the capital of Chile?','Santiago',4);
+INSERT INTO `flashcard` VALUES (1,'Java is short for \"JavaScript\".','false',1),(2,'(X+2)/4 = 20 What is X?','78',3),(3,'In Java, it is possible to inherit attributes and methods from one class to another.','True',1),(4,'Who created java language?','James Gosling, Mike Sheridan, and Patrick Naughton',1),(5,'What was the first name of Java?','Greentalk',1),(6,'What was the second name of Java?','Oak, Oak is a symbol of strength and chosen as a national tree of many countries like the U.S.A., France, Germany, Romania, etc.In 1995, Oak was renamed as \"Java\" because it was already a trademark by Oak Technologies.',1),(7,'4+5+6+7 = ?','22',3),(8,'What is the capital of Thailand?','Bangkok',4),(9,'What is the capital of Germany?','Berlin',4),(10,'11+5+3-3-5-11 = ?','0',3),(11,'What is the capital of China?','Beijing',4),(12,'2X + 6 = 10 What is X?','2',3),(13,'What is the capital of Russia?','Moscow',4),(14,'What is the capital of Chile?','Santiago',4);
 /*!40000 ALTER TABLE `flashcard` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,7 +66,7 @@ CREATE TABLE `flashcardset` (
 
 LOCK TABLES `flashcardset` WRITE;
 /*!40000 ALTER TABLE `flashcardset` DISABLE KEYS */;
-INSERT INTO `flashcardset` VALUES (1,'IT','Java','Basic Java question'),(2,'Chemistry','Science','High school Chemistry questions'),(3,'Algebra','Mathematics','High school Mathematics'),(4,'geography','geography','Elementary geography questions');
+INSERT INTO `flashcardset` VALUES (1,'IT','Java','Basic Java questions'),(2,'Chemistry','Science','High School Chemistry questions'),(3,'Algebra','Mathematics','High School Mathematics'),(4,'Geography','Geography','Elementary Geography questions');
 /*!40000 ALTER TABLE `flashcardset` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

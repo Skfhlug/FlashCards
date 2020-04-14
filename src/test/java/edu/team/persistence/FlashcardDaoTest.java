@@ -99,7 +99,7 @@ public class FlashcardDaoTest {
      */
     @Test
     void getByPropertyEqualSuccess() {
-        List<Flashcard> flashcard = genericDao.getByPropertyEqual("question", "What was the first name of JAVA?");
+        List<Flashcard> flashcard = genericDao.getByPropertyEqual("question", "What was the first name of Java?");
         assertEquals(1, flashcard.size());
     }
 

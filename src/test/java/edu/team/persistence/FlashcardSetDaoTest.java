@@ -63,7 +63,7 @@ public class FlashcardSetDaoTest {
      */
     @Test
     void insertSuccess() {
-        FlashcardSet flashcardSet = new FlashcardSet("IT", "JavaScript", "Basic JavaScriptQuestions");
+        FlashcardSet flashcardSet = new FlashcardSet("IT", "JavaScript", "Basic JavaScript questions");
         int id = genericDao.insert(flashcardSet);
         assertNotEquals(0, id);
         FlashcardSet insertedFlashcardSet = genericDao.getById(id);

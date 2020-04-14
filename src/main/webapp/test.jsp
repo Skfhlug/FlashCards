@@ -27,7 +27,6 @@
 
         <button onClick="window.location.reload();">Next Question</button>
 
-
         <script>
             function myFunction() {
                 document.getElementById("answer").innerHTML = "Answer: ${qa.answer}";
@@ -37,7 +36,7 @@
     </div>
 <footer>
     <div class="footerLeft">
-        <p>create by</p>
+        <p>created by</p>
         <p>Jacob Doney, Joel Swanson, Katya Mullendore, Suparin Fhlug</p>
     </div>
     <!--
