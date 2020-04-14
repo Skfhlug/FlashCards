@@ -2,7 +2,7 @@
 
 #### [Project Link](http://3.20.154.162:8080/FlashCards/)
 
-#### [Documentation](http://3.20.154.162:8080/FlashCards/documentation/index.html)
+#### [Documentation](https://app.swaggerhub.com/apis/emullendore/FlashCards/1.0.0#/)
 
 #### Problem Statement
 
