@@ -20,7 +20,7 @@
     <junit.version>4.12</junit.version>
     <junit-vintage-version>4.12.0</junit-vintage-version>
     <javax.version>7.0</javax.version>
-    <mysql-version>8.0.16</mysql-version>
+    <mysql-version>8.0.28</mysql-version>
     <jstl-version>1.2</jstl-version>
     <log4j-version>2.10.0</log4j-version>
     <jupiter-version>5.0.0</jupiter-version>
